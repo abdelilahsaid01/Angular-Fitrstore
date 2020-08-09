@@ -1,0 +1,35 @@
+<ul class="collection with-header" *ngIf="contacts?.length>0; else noContacts">
+    <li class="collection-item collection-header">
+        <h5>La liste des contacts</h5>
+    </li>
+    <li class="collection-item" *ngFor="let contact of contacts">
+        <div class="row">
+            <div class="s12 col">
+                <strong>{{contact.name}}</strong> {{contact.telephone}}
+                <button class="btn green" (click)="statusContact(contact)"><i class="fa fa-edit"></i></button>
+                <button class="btn green" (click)="deleteContact(contact)"><i class="fa fa-remove"></i></button>
+
+            </div>
+            <div class="s12 col">
+                <div *ngIf="statusUpdate && contact.id==Mycontacts.id">
+                    <div class="row">
+                        <div class="input-field col s12 m6">
+                            <i class="fa fa-user prefix"></i>
+                            <input id="icon_prefix" type="text" name="name" [(ngModel)]="contact.name">
+                        </div>
+
+                        <div class="input-field col s12 m6">
+                            <i class="fa fa-phone prefix"></i>
+                            <input id="icon_telephone" type="text" name="telephone" [(ngModel)]="contact.telephone">
+                        </div>
+                        <button class="btn orange" (click)="updateContact(contact)">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<ng-template #noContacts>
+    <h5>La liste des contacts est vide!!</h5>
+</ng-template>

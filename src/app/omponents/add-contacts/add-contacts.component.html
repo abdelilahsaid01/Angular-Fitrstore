@@ -1,0 +1,22 @@
+<div class="row" *ngIf="status">
+    <form class="col s12" (ngSubmit)="addContact()">
+        <div class="row">
+            <div class="input-field col s6">
+                <i class="fa fa-user prefix"></i>
+                <input id="icon_prefix" type="text" name="name" [(ngModel)]="contact.name">
+                <label for="icon_prefix">First Name</label>
+            </div>
+            <div class="input-field col s6">
+                <i class="fa fa-phone prefix"></i>
+                <input id="icon_telephone" type="text" name="telephone" [(ngModel)]="contact.telephone">
+                <label for="icon_telephone">Telephone</label>
+            </div>
+        </div>
+        <button class="btn-large red" type="submit">submit</button> {{contact | json}}
+    </form>
+    <!-- <button class="btn-large red" type="submit" (click)="addContact()">submit</button> {{contact | json}} -->
+
+</div>
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light red" (click)="status=!status"><i class="large fa fa-plus"></i></a>
+</div>
